@@ -1,0 +1,9 @@
+
+x64/
+
+.rc
+.aps
+.vcxproj
+.filters
+.user
+/vs/
