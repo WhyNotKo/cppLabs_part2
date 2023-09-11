@@ -8,12 +8,12 @@ using namespace std;
 
 void cout_menu()
 {
-	cout << "\n 1. Create account."
-		<< "\n 2. Display all accounts."
-		<< "\n 3. Load accounts from file."
-		<< "\n 4. Save account to file."
-		<< "\n 5. Delete all accounts."
-		<< "\n 0. exit.\n";
+	cout << "\n 1. Создать счёт."
+		<< "\n 2. Показать все счета."
+		<< "\n 3. Загрузить из файла."
+		<< "\n 4. Сохранить в файл."
+		<< "\n 5. Очистить банк."
+		<< "\n 0. Выход.\n";
 }
 
 int input_menu()
@@ -24,8 +24,11 @@ int input_menu()
 		return a;
 	}
 }
+
+
 int main()
 {
+	setlocale(LC_ALL, "");
 	Aleshko_bank bank;
 	int menu = 0;
 	while (true)
@@ -40,22 +43,27 @@ int main()
 
 		if (menu == 1)
 		{
+			system("cls");
 			bank.createAccount();
 		}
 		if (menu == 2)
 		{
+			system("cls");
 			bank.displayAllAccounts();
 		}
 		if (menu == 3)
 		{
+			system("cls");
 			bank.loadAllAccounts();
 		}
 		if (menu == 4)
 		{
+			system("cls");
 			bank.saveAllAccounts();
 		}
 		if (menu == 5)
 		{
+			system("cls");
 			bank.~Aleshko_bank();
 
 		}

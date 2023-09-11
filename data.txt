@@ -1,8 +1,10 @@
-2
+3
 Vitya
 deposit
 500
 Albert
 account
 600
-
+Masha
+deposit
+2500

@@ -15,9 +15,9 @@ std::ifstream& operator >> (std::ifstream& fin, Aleshko_account& acc)
 
 std::ostream& operator << (std::ostream& out, const Aleshko_account& acc)
 {
-	std::cout << "Client: " << acc.name << std::endl;
-	std::cout << "Type of account : " << acc.type << std::endl;
-	std::cout << "Set deposited money: " << acc.money << std::endl;
+	std::cout << " лиентt: " << acc.name << std::endl;
+	std::cout << "“ип счЄта : " << acc.type << std::endl;
+	std::cout << "—редства на счЄте: " << acc.money << std::endl;
 	return out;
 }
 

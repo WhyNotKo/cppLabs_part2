@@ -4,7 +4,7 @@
 
 std::string enterFilename()
 {
-    std::cout << "Enter name of file (without .txt): ";
+    std::cout << "Введите название файла (без расширения .txt): ";
     std::string filename;
     std::cin >> filename;
     return filename + ".txt";
@@ -14,20 +14,29 @@ void Aleshko_bank::createAccount()
 {
     std::string name, type;
     long int money;
-    std::cout << "Enter client's name: ";
-    std::cin >> name;
-    std::cout << "Set type of account: ";
-    std::cin >> type;
-    std::cout << "Set deposited money: ";
+    std::cout << "Введите ФИО клиента: ";
+    std::cin.ignore();
+    std::getline(std::cin, name);
+    std::cout << "Тип счёта: ";
+    std::getline(std::cin, type);
+    std::cout << "Колличество денег: ";
     money = GetCorrectNumber(0);
     Aleshko_account* account = new Aleshko_account(name, type, money);
     accounts.push_back(account);
 }
 void Aleshko_bank::displayAllAccounts() const{
-    std::cout << "All accounts:" << std::endl;
-    for (const Aleshko_account* account : accounts) {
-        std::cout << *account << std::endl << std::endl;
+    if (accounts.size())
+    {
+        std::cout << "Все счета банка:" << std::endl << std::endl;
+        for (const Aleshko_account* account : accounts) {
+            std::cout << *account << std::endl;
+        }
     }
+    else
+    {
+        std::cout << "\nУ банка нет клиентов..." << std::endl;
+    }
+    
 }
 
 void Aleshko_bank::loadAllAccounts()
@@ -49,7 +58,7 @@ void Aleshko_bank::loadAllAccounts()
     }
     else
     {
-        std::cout << "File isn't open." << std::endl;
+        std::cout << "Файл не был открыт." << std::endl;
     }
 }
 
@@ -63,6 +72,6 @@ void Aleshko_bank::saveAllAccounts()
         fout << *acc << std::endl;
     }
 
-    std::cout << "Save was successfully finished (I wish)." << std::endl;
+    std::cout << "Данные были успешно сохранены." << std::endl;
 
 }

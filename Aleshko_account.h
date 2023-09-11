@@ -41,7 +41,7 @@ public:
 	}
 
 
-	friend std::istream& operator >> (std::istream& in, Aleshko_account& acc);
+	//friend std::istream& operator >> (std::istream& in, Aleshko_account& acc);
 
 	friend std::ifstream& operator >> (std::ifstream& fin, Aleshko_account& acc);
 
