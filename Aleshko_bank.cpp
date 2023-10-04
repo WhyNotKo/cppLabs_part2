@@ -55,6 +55,7 @@ void Aleshko_bank::loadAllAccounts()
             *acc = account;
             accounts.push_back(acc);
         }
+        fin.close();
     }
     else
     {
