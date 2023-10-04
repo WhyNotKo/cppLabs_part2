@@ -396,5 +396,4 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
-*.png
-Extrapolation/Extrapolation/data/0
+*.txt
