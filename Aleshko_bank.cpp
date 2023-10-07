@@ -76,3 +76,7 @@ void Aleshko_bank::saveAllAccounts()
     std::cout << "Данные были успешно сохранены." << std::endl;
 
 }
+
+//void Aleshko_bank::clear() {
+//    accounts.clear();
+//}
