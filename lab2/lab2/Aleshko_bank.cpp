@@ -33,11 +33,11 @@ void Aleshko_bank::displayAllAccounts() const {
 void Aleshko_bank::saveAllAccounts(const CString& filename)
 {
     CFile f;
-    f.Open("data.dat", CFile::modeCreate | CFile::modeWrite);
+    f.Open(filename, CFile::modeCreate | CFile::modeWrite);
     CArchive ar(&f, CArchive::store);
 
-    ar << accounts.size();
-    for (auto acc : accounts) {
+    ar << (int)accounts.size();
+    for (auto &acc : accounts) {
         ar << acc.get();
     }
 
@@ -50,10 +50,10 @@ void Aleshko_bank::loadAllAccounts(const CString& filename)
     accounts.clear();
 
     CFile f;
-    f.Open("data", CFile::modeRead);
+    f.Open(filename, CFile::modeRead);
     CArchive ar(&f, CArchive::load);
 
-    int size = 0;
+    int size;
     ar >> size;
 
     for (int i = 0; i < size; i++) {
