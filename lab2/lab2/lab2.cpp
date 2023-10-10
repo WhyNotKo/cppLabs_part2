@@ -95,7 +95,8 @@ int main()
 			system("cls");
 			cout << "Введите название файла: ";
 			string filename;
-			cin >> filename;
+			cin.ignore();
+			getline(cin, filename);
 			bank.loadAllAccounts(filename.c_str());
 		}
 		if (menu == 4)
@@ -103,7 +104,8 @@ int main()
 			system("cls");
 			cout << "Введите название файла: ";
 			string filename;
-			cin >> filename;
+			cin.ignore();
+			getline(cin, filename);
 			bank.saveAllAccounts(filename.c_str());
 		}
 		if (menu == 5)

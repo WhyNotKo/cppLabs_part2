@@ -33,16 +33,19 @@ void Aleshko_bank::displayAllAccounts() const {
 void Aleshko_bank::saveAllAccounts(const CString& filename)
 {
     CFile f;
-    f.Open(filename, CFile::modeCreate | CFile::modeWrite);
-    CArchive ar(&f, CArchive::store);
+    if (f.Open(filename, CFile::modeCreate | CFile::modeWrite)) {
+        CArchive ar(&f, CArchive::store);
 
-    ar << (int)accounts.size();
-    for (auto &acc : accounts) {
-        ar << acc.get();
+        ar << (int)accounts.size();
+        for (auto& acc : accounts) {
+            ar << acc.get();
+        }
+
+        ar.Close();
+        f.Close();
     }
-
-    ar.Close();
-    f.Close();
+    else
+        std::cout << "Ôאיכא םוע" << std::endl;
 }
 
 void Aleshko_bank::loadAllAccounts(const CString& filename)
@@ -50,20 +53,25 @@ void Aleshko_bank::loadAllAccounts(const CString& filename)
     accounts.clear();
 
     CFile f;
-    f.Open(filename, CFile::modeRead);
-    CArchive ar(&f, CArchive::load);
+    if (f.Open(filename, CFile::modeRead))
+    {
+        CArchive ar(&f, CArchive::load);
 
-    int size;
-    ar >> size;
+        int size;
+        ar >> size;
 
-    for (int i = 0; i < size; i++) {
-        Aleshko_account* acc;
-        ar >> acc;
-        std::shared_ptr<Aleshko_account> account(acc);
-        accounts.push_back(account);
+        for (int i = 0; i < size; i++) {
+            Aleshko_account* acc;
+            ar >> acc;
+            std::shared_ptr<Aleshko_account> account(acc);
+            accounts.push_back(account);
+        }
+        ar.Close();
+        f.Close();
     }
-    ar.Close();
-    f.Close();
+    else {
+        std::cout << "Ôאיכא םוע." << std::endl;
+    }
 }
 
 void Aleshko_bank::clear() {
