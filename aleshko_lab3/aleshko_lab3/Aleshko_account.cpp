@@ -20,22 +20,21 @@ void Aleshko_account::Serialize(CArchive& ar) {
 	}
 }
 
-void Aleshko_account::GetLength(CDC* pDC, int* aLen)
+void Aleshko_account::GetLength(CDC* pDC, int* mesLen)
 {
-	aLen[0] = pDC->GetTextExtent(name).cx;
-	aLen[1] = pDC->GetTextExtent(type).cx;
-	aLen[2] = pDC->GetTextExtent(to_string(money).c_str()).cx;
-	aLen[3] = 0;
-	aLen[4] = 0;
+	mesLen[0] = pDC->GetTextExtent(name).cx;
+	mesLen[1] = pDC->GetTextExtent(type).cx;
+	mesLen[2] = pDC->GetTextExtent(to_string(money).c_str()).cx;
+	mesLen[3] = 0;
 }
 
 void Aleshko_account::CDCDrow(CDC* pDC, int* aLeft, int* aLen, int& top, int lineHeight)
 {
 
-	pDC->TextOut(aLeft[0], top, name);
-	pDC->TextOut(aLeft[1], top, type);
-	pDC->TextOut(aLeft[2], top, to_string(money).c_str());
+	pDC->TextOutA(aLeft[0], top, name);
+	pDC->TextOutA(aLeft[1], top, type);
+	pDC->TextOutA(aLeft[2], top, to_string(money).c_str());
 	top += lineHeight;
-	pDC->MoveTo(0, top - 4);
-	pDC->LineTo(aLen[4] + 4, top - 4);
+	pDC->MoveTo(0, top - 5);
+	pDC->LineTo(aLen[3] + 5, top - 5);
 }

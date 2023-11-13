@@ -4,7 +4,7 @@
 
 
 #pragma once
-
+#include "Aleshko_bank.h"
 
 class Caleshkolab3Doc : public CDocument
 {
@@ -14,7 +14,7 @@ protected: // создать только из сериализации
 
 // Атрибуты
 public:
-
+	Aleshko_bank accounts;
 // Операции
 public:
 

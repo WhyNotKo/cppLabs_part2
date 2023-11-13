@@ -46,7 +46,8 @@ BOOL Caleshkolab3Doc::OnNewDocument()
 
 	// TODO: добавьте код повторной инициализации
 	// (Документы SDI будут повторно использовать этот документ)
-	Aleshko_bank::Clear;
+	
+	accounts.Clear();
 	return TRUE;
 }
 
@@ -59,11 +60,12 @@ void Caleshkolab3Doc::Serialize(CArchive& ar)
 {
 	if (ar.IsStoring())
 	{
-		// TODO: добавьте код сохранения
+		accounts.Save(ar);// TODO: добавьте код сохранения
 	}
 	else
 	{
-		// TODO: добавьте код загрузки
+		accounts.Clear();
+		accounts.Load(ar);// TODO: добавьте код загрузки
 	}
 }
 

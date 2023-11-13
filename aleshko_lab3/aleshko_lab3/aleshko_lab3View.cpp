@@ -48,13 +48,20 @@ BOOL Caleshkolab3View::PreCreateWindow(CREATESTRUCT& cs)
 
 // Рисование Caleshkolab3View
 
-void Caleshkolab3View::OnDraw(CDC* /*pDC*/)
+void Caleshkolab3View::OnDraw(CDC* pDC)
 {
 	Caleshkolab3Doc* pDoc = GetDocument();
 	ASSERT_VALID(pDoc);
 	if (!pDoc)
 		return;
 
+	CPen pen(PS_SOLID, 3, RGB(255, 102, 0));
+	CPen* pOldpen = pDC->SelectObject(&pen);
+
+	CSize sizeTotal = pDoc->accounts.DrawTable(pDC);
+	SetScrollSizes(MM_TEXT, sizeTotal); //логический размер и режим сопоставления координат для прокрутки вида
+
+	pDC->SelectObject(&pOldpen);
 	// TODO: добавьте здесь код отрисовки для собственных данных
 }
 

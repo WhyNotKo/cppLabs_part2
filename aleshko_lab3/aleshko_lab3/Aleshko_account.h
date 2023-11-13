@@ -35,7 +35,7 @@ public:
 
 	virtual void Serialize(CArchive& ar);
 
-	virtual void GetLength(CDC* pDC, int* aLen);
+	virtual void GetLength(CDC* pDC, int* mesLen);
 
 	virtual void CDCDrow(CDC* pDC, int* aLeft, int* aLen, int& top, int lineHeight);
 

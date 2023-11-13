@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "Aleshko_bank.h"
 
+using namespace std;
 
 void Aleshko_bank::Load(CArchive& ar)
 {
@@ -14,6 +15,7 @@ void Aleshko_bank::Load(CArchive& ar)
 	}
 }
 
+
 void Aleshko_bank::Save(CArchive& ar)
 {
 
@@ -22,53 +24,55 @@ void Aleshko_bank::Save(CArchive& ar)
 	for (auto& acc : accounts) {
 		ar << acc.get();
 	}
-	std::cout << "Successful" << std::endl;
 }
 
 CSize Aleshko_bank::DrawTable(CDC* pDC)
 {
 	const int indent = 5;
-	const int HorSpace = 15;
-	const int LineHeight = 30;
+	const int HorSpace = 10;
+	const int LineHeight = 25;
 
-	CString aHead[5];
+	CString aHead[4];
 	aHead[0] = "ФИО";
 	aHead[1] = "Тип счёта";
 	aHead[2] = "Кол-во средств";
-	aHead[3] = "Вип";
-	aHead[4] = "Кредитный лимит";
+	aHead[3] = "Кредитный лимит";
 
 
-	int aLen[5];
-	for (int i = 0; i < 5; ++i)
+	int aLen[4];
+	for (int i = 0; i < 4; ++i)
 		aLen[i] = pDC->GetTextExtent(aHead[i]).cx;
 
 
-	for (auto& prod : accounts)
+	for (auto acc : accounts)
 	{
-		int memLen[5];
-		prod->GetLength(pDC, memLen);
-		for (int i = 0; i < 5; ++i)
+		int memLen[4] = {0};
+		acc->GetLength(pDC, memLen);
+		for (int i = 0; i < 4; ++i)
+		{
 			if (memLen[i] > aLen[i])
+			{
 				aLen[i] = memLen[i];
+			}
+		}
 	}
 
 
 	aLen[0] += indent;
-	for (int i = 1; i < 5; ++i)
+	for (int i = 1; i < 4; ++i)
 	{
 		aLen[i - 1] += HorSpace;
 		aLen[i] += aLen[i - 1];
 	}
 
-	int aLeft[5];
+	int aLeft[4];
 	aLeft[0] = indent;
-	for (int i = 1; i < 5; ++i)
+	for (int i = 1; i < 4; ++i)
 		aLeft[i] = aLen[i - 1];
 
 
 	int top = indent;
-	for (int i = 0; i < 5; ++i)
+	for (int i = 0; i < 4; ++i)
 	{
 		pDC->TextOutA(aLeft[i], top, aHead[i]);
 	}
@@ -78,22 +82,22 @@ CSize Aleshko_bank::DrawTable(CDC* pDC)
 	for_each(accounts.begin(), accounts.end(), bind(&Aleshko_account::CDCDrow, placeholders::_1, pDC, aLeft, aLen, ref(top), LineHeight));
 
 	POINT sizeAll;
-	sizeAll.x = aLen[5] + indent;
-	sizeAll.y = top;
+	sizeAll.x = aLen[3] + indent;
+	sizeAll.y = top - indent;
 
 	pDC->MoveTo(0, 0);
 	pDC->LineTo(sizeAll.x, 0);
 	pDC->LineTo(sizeAll);
-	pDC->LineTo(0, sizeAll.y);
+	pDC->MoveTo(0, sizeAll.y);
 	pDC->LineTo(0, 0);
 
-	for (int i = 1; i < 5; ++i)
+	for (int i = 1; i < 4; ++i)
 	{
 		pDC->MoveTo(aLeft[i] - HorSpace / 2, 0);
 		pDC->LineTo(aLeft[i] - HorSpace / 2, sizeAll.y);
 	}
-	pDC->MoveTo(0, indent + LineHeight - 4);
-	pDC->LineTo(sizeAll.x, indent + LineHeight - 4);
+	pDC->MoveTo(0, LineHeight);
+	pDC->LineTo(sizeAll.x, LineHeight );
 
 	return sizeAll;
 }
