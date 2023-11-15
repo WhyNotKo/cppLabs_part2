@@ -29,8 +29,8 @@ void Aleshko_bank::Save(CArchive& ar)
 CSize Aleshko_bank::DrawTable(CDC* pDC)
 {
 	const int indent = 5;
-	const int HorSpace = 10;
-	const int LineHeight = 25;
+	const int Linered = 20;
+	const int LineHeight = 35;
 
 	CString aHead[4];
 	aHead[0] = "ФИО";
@@ -39,14 +39,14 @@ CSize Aleshko_bank::DrawTable(CDC* pDC)
 	aHead[3] = "Кредитный лимит";
 
 
-	int aLen[4];
+	vector<int> aLen{ 0, 0, 0, 0 };
 	for (int i = 0; i < 4; ++i)
 		aLen[i] = pDC->GetTextExtent(aHead[i]).cx;
 
 
 	for (auto acc : accounts)
 	{
-		int memLen[4] = {0};
+		vector <int> memLen = {0, 0, 0, 0};
 		acc->GetLength(pDC, memLen);
 		for (int i = 0; i < 4; ++i)
 		{
@@ -61,7 +61,7 @@ CSize Aleshko_bank::DrawTable(CDC* pDC)
 	aLen[0] += indent;
 	for (int i = 1; i < 4; ++i)
 	{
-		aLen[i - 1] += HorSpace;
+		aLen[i - 1] += Linered;
 		aLen[i] += aLen[i - 1];
 	}
 
@@ -74,12 +74,12 @@ CSize Aleshko_bank::DrawTable(CDC* pDC)
 	int top = indent;
 	for (int i = 0; i < 4; ++i)
 	{
-		pDC->TextOutA(aLeft[i], top, aHead[i]);
+		pDC->TextOut(aLeft[i], top, aHead[i]);
 	}
 	top += LineHeight;
 
 
-	for_each(accounts.begin(), accounts.end(), bind(&Aleshko_account::CDCDrow, placeholders::_1, pDC, aLeft, aLen, ref(top), LineHeight));
+	for_each(accounts.begin(), accounts.end(), bind(&Aleshko_account::CDCDraw, placeholders::_1, pDC, aLeft, aLen, ref(top), LineHeight));
 
 	POINT sizeAll;
 	sizeAll.x = aLen[3] + indent;
@@ -93,11 +93,11 @@ CSize Aleshko_bank::DrawTable(CDC* pDC)
 
 	for (int i = 1; i < 4; ++i)
 	{
-		pDC->MoveTo(aLeft[i] - HorSpace / 2, 0);
-		pDC->LineTo(aLeft[i] - HorSpace / 2, sizeAll.y);
+		pDC->MoveTo(aLeft[i] - Linered / 2, 0);
+		pDC->LineTo(aLeft[i] - Linered / 2, sizeAll.y);
 	}
 	pDC->MoveTo(0, LineHeight);
-	pDC->LineTo(sizeAll.x, LineHeight );
+	pDC->LineTo(sizeAll.x, LineHeight);
 
 	return sizeAll;
 }

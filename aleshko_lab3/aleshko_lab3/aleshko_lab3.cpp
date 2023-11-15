@@ -156,8 +156,10 @@ END_MESSAGE_MAP()
 // Команда приложения для запуска диалога
 void Caleshkolab3App::OnAppAbout()
 {
+
 	CAboutDlg aboutDlg;
 	aboutDlg.DoModal();
+
 }
 
 // Обработчики сообщений Caleshkolab3App

@@ -17,8 +17,8 @@ public:
 
 	void Serialize(CArchive& ar);
 
-	void GetLength(CDC* pDC, int* aLen);
+	void GetLength(CDC* pDC, std::vector<int> mesLen);
 
-	void CDCDrow(CDC* pDC, int* aLeft, int* aLen, int& top, int lineHeight);
+	void CDCDraw(CDC* pDC, int* aLeft, std::vector<int> aLen, int& top, int lineHeight);
 
 };

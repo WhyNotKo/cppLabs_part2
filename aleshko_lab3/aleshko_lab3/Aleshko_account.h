@@ -35,9 +35,9 @@ public:
 
 	virtual void Serialize(CArchive& ar);
 
-	virtual void GetLength(CDC* pDC, int* mesLen);
+	virtual void GetLength(CDC* pDC, std::vector<int>& mesLen);
 
-	virtual void CDCDrow(CDC* pDC, int* aLeft, int* aLen, int& top, int lineHeight);
+	virtual void CDCDraw(CDC* pDC, int* aLeft, std::vector<int> aLen, int& top, int lineHeight);
 
 
 };
