@@ -12,6 +12,7 @@
 
 #include "aleshko_lab3Doc.h"
 #include "aleshko_lab3View.h"
+#include "Accs_dialog.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -24,6 +25,7 @@ IMPLEMENT_DYNCREATE(Caleshkolab3View, CScrollView)
 
 BEGIN_MESSAGE_MAP(Caleshkolab3View, CScrollView)
 	ON_WM_LBUTTONDOWN()
+	ON_COMMAND(ID_32772, &Caleshkolab3View::OnEditMenu)
 END_MESSAGE_MAP()
 
 // Создание или уничтожение Caleshkolab3View
@@ -89,6 +91,7 @@ void Caleshkolab3View::Dump(CDumpContext& dc) const
 	CScrollView::Dump(dc);
 }
 
+
 Caleshkolab3Doc* Caleshkolab3View::GetDocument() const // встроена неотлаженная версия
 {
 	ASSERT(m_pDocument->IsKindOf(RUNTIME_CLASS(Caleshkolab3Doc)));
@@ -96,16 +99,13 @@ Caleshkolab3Doc* Caleshkolab3View::GetDocument() const // встроена не�
 }
 #endif //_DEBUG
 
+void Caleshkolab3View::OnEditMenu()
+{
+	//Accs_dialog EditDialog(GetDocument());
+	//EditDialog.DoModal();
 
-// Обработчики сообщений Caleshkolab3View
+	Invalidate();
+}
 
 
-//void Caleshkolab3View::OnLButtonDown(UINT nFlags, CPoint point)
-//{
-//	//CWindowDC dc(this);
-//	//CString s;
-//	//s.Format(_T("[%d, %d]", point.x, point.y);
-//	//dc.TextOut(point.x, point.y, s);
-//	//CScrollView::OnLButtonDown(nFlags, point);
-//}
-	
+

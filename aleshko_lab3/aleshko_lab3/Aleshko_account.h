@@ -20,7 +20,7 @@ class Aleshko_account : public CObject
 protected:
 	CString name;
 	CString type;
-	int money;
+	unsigned int money;
 
 public:
 	DECLARE_SERIAL(Aleshko_account)
@@ -29,16 +29,23 @@ public:
 
 	virtual ~Aleshko_account() {}
 
-	//virtual void input();
-
-	//virtual void output();
-
 	virtual void Serialize(CArchive& ar);
 
 	virtual void GetLength(CDC* pDC, std::vector<int>& mesLen);
 
 	virtual void CDCDraw(CDC* pDC, int* aLeft, std::vector<int> aLen, int& top, int lineHeight);
 
+	virtual CString GetName();
+
+	virtual void SetName(CString name);
+
+	CString GetType();
+
+	unsigned int GetMoney();
+
+	void SetType(CString type);
+
+	void SetMoney(unsigned int money);
 
 };
 

@@ -93,7 +93,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -184,6 +184,8 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Accone_dialog.h" />
+    <ClInclude Include="Accs_dialog.h" />
     <ClInclude Include="Aleshko_account.h" />
     <ClInclude Include="Aleshko_bank.h" />
     <ClInclude Include="aleshko_lab3.h" />
@@ -197,6 +199,8 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Accone_dialog.cpp" />
+    <ClCompile Include="Accs_dialog.cpp" />
     <ClCompile Include="Aleshko_account.cpp" />
     <ClCompile Include="Aleshko_bank.cpp" />
     <ClCompile Include="aleshko_lab3.cpp" />

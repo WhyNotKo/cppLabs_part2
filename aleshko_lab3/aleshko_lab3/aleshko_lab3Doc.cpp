@@ -121,6 +121,8 @@ void Caleshkolab3Doc::SetSearchContent(const CString& value)
 	}
 }
 
+
+
 #endif // SHARED_HANDLERS
 
 // Диагностика Caleshkolab3Doc
@@ -139,3 +141,10 @@ void Caleshkolab3Doc::Dump(CDumpContext& dc) const
 
 
 // Команды Caleshkolab3Doc
+
+void Caleshkolab3Doc::OnEditSssdialog()
+{
+	Accs_dialog dlg(this);
+	dlg.DoModal();
+	UpdateAllViews(NULL);
+}

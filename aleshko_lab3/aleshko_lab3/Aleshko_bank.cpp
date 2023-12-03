@@ -15,6 +15,16 @@ void Aleshko_bank::Load(CArchive& ar)
 	}
 }
 
+void Aleshko_bank::Add(std::shared_ptr<Aleshko_account> ptr)
+{
+	accounts.push_back(ptr);
+}
+
+void Aleshko_bank::Addvip(std::shared_ptr<Aleshko_vip> ptr)
+{
+	accounts.push_back(ptr);
+}
+
 
 void Aleshko_bank::Save(CArchive& ar)
 {
@@ -105,4 +115,25 @@ CSize Aleshko_bank::DrawTable(CDC* pDC)
 void Aleshko_bank::Clear()
 {
 	accounts.clear();
+}
+
+void Aleshko_bank::Erase(int n)
+{
+	accounts.erase(accounts.begin() + n);
+}
+
+void Aleshko_bank::ToListMembers(CListBox& list)
+{
+	for (auto& p_mem : accounts) {
+
+		list.AddString(p_mem.get()->GetName());
+	}
+}
+size_t Aleshko_bank::GetSize() {
+	return accounts.size();
+}
+
+std::shared_ptr<Aleshko_account> Aleshko_bank::GetNAcc(int index)
+{
+	return accounts[index-1];
 }

@@ -33,3 +33,15 @@ void Aleshko_vip::CDCDraw(CDC* pDC, int* aLeft, vector<int> aLen, int& top, int 
 	Aleshko_account::CDCDraw(pDC, aLeft, aLen, top, lineHeight);
 
 }
+
+unsigned int Aleshko_vip::GetCredit()
+{
+	return this->credit_limit;
+}
+
+void Aleshko_vip::SetCredit(unsigned int credit)
+{
+	this->credit_limit = credit;
+}
+
+

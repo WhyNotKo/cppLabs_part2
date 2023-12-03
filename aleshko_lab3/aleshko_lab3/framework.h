@@ -36,6 +36,8 @@
 #include <algorithm>
 #include <functional>
 
+#include "Accs_dialog.h"
+
 
 
 

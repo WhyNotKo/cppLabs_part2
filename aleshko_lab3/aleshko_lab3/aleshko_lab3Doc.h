@@ -3,8 +3,8 @@
 //
 
 
-#pragma once
 #include "Aleshko_bank.h"
+#pragma once
 
 class Caleshkolab3Doc : public CDocument
 {
@@ -45,4 +45,7 @@ protected:
 	// Вспомогательная функция, задающая содержимое поиска для обработчика поиска
 	void SetSearchContent(const CString& value);
 #endif // SHARED_HANDLERS
+
+public:
+	afx_msg void OnEditSssdialog();
 };
