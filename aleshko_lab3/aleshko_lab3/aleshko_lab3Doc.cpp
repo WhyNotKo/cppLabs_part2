@@ -24,6 +24,7 @@
 IMPLEMENT_DYNCREATE(Caleshkolab3Doc, CDocument)
 
 BEGIN_MESSAGE_MAP(Caleshkolab3Doc, CDocument)
+	ON_COMMAND(ID_EDIT_DIALOG, &Caleshkolab3Doc::OnEditDialog)
 END_MESSAGE_MAP()
 
 
@@ -142,7 +143,7 @@ void Caleshkolab3Doc::Dump(CDumpContext& dc) const
 
 // Команды Caleshkolab3Doc
 
-void Caleshkolab3Doc::OnEditSssdialog()
+void Caleshkolab3Doc::OnEditDialog()
 {
 	Accs_dialog dlg(this);
 	dlg.DoModal();

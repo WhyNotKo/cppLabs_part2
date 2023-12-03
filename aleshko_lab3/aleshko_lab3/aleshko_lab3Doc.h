@@ -48,4 +48,5 @@ protected:
 
 public:
 	afx_msg void OnEditSssdialog();
+	afx_msg void OnEditDialog();
 };

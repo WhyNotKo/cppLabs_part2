@@ -40,9 +40,7 @@ BOOL Accone_dialog::OnInitDialog() {
 		pmoney.SetWindowText(std::to_string(acc->GetMoney()).c_str());
 
 		if (dynamic_cast<Aleshko_vip*>(acc)) {
-			pcredit_limit.SetWindowText(
-				std::to_string(dynamic_cast<Aleshko_vip*>(acc)->GetCredit()).c_str()
-			);
+			pcredit_limit.SetWindowText(std::to_string(dynamic_cast<Aleshko_vip*>(acc)->GetCredit()).c_str());
 			CB_vip.SetCheck(TRUE);
 			CB_vip.EnableWindow(FALSE);
 		}
@@ -64,6 +62,7 @@ void Accone_dialog::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_ONEMONEY, pmoney);
 	DDX_Control(pDX, IDC_ONECREDIT, pcredit_limit);
 	DDX_Control(pDX, IDC_VIP, CB_vip);
+	DDX_Check(pDX, IDC_VIP, is_vip);	
 }
 
 
@@ -92,7 +91,7 @@ void Accone_dialog::OnBnClickedOk()
 		idx = m_pDiag->AccsList.GetCurSel();
 		Aleshko_account* acc = m_pDoc->accounts.GetNAcc(idx).get();
 		change_acc(acc, CB_vip.GetCheck());
-	}
+	}	
 	if (m_pDiag->AccsList.GetCount())
 		while (m_pDiag->AccsList.DeleteString(0));
 	m_pDoc->accounts.ToListMembers(m_pDiag->AccsList);
@@ -131,13 +130,13 @@ void Accone_dialog::add_vip()
 	GetDlgItemText(IDC_ONEMONEY, money);
 	pmem->SetMoney(_ttoi(money));
 
-	GetDlgItemText(IDC_ONEMONEY, credit);
+	GetDlgItemText(IDC_ONECREDIT, credit);
 	pmem->SetCredit(_ttoi(credit));
 
 	m_pDoc->accounts.Addvip(pmem);
 }
 
-void Accone_dialog::change_acc(Aleshko_account* acc, BOOL is_vip)
+void Accone_dialog::change_acc(Aleshko_account* acc, BOOL is_v)
 {
 	CString name, type, money;
 	GetDlgItemText(IDC_ONENAME, name);
@@ -149,18 +148,16 @@ void Accone_dialog::change_acc(Aleshko_account* acc, BOOL is_vip)
 	GetDlgItemText(IDC_ONEMONEY, money);
 	acc->SetMoney(_ttoi(money));
 
-	if (is_vip) {
-		CString exp;
-		GetDlgItemText(IDC_ONECREDIT, exp);
-		dynamic_cast<Aleshko_vip*>(acc)->SetCredit(_ttoi(exp));
+	if (is_v) {
+		CString credit;
+		GetDlgItemText(IDC_ONECREDIT, credit);
+		dynamic_cast<Aleshko_vip*>(acc)->SetCredit(_ttoi(credit));
 	}
 }
 
 
 void Accone_dialog::OnBnHotItemChangeVip(NMHDR* pNMHDR, LRESULT* pResult)
 {
-	// Для этого средства требуется Internet Explorer 6 или более поздняя версия.
-	// Символ _WIN32_IE должен быть >= 0x0600.
 	LPNMBCHOTITEM pHotItem = reinterpret_cast<LPNMBCHOTITEM>(pNMHDR);
 	pcredit_limit.EnableWindow(CB_vip.GetCheck());
 	*pResult = 0;

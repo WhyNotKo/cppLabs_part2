@@ -1,7 +1,6 @@
 ﻿#pragma once
 #include "afxdialogex.h"
 #include "aleshko_lab3Doc.h"
-#include "Accone_dialog.h"
 
 
 class Caleshkolab3Doc;

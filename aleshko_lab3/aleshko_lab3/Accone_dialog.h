@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include "afxdialogex.h"
-#include "aleshko_lab3Doc.h"
 #include "Accs_dialog.h"
+#include "aleshko_lab3Doc.h"
 
 
 // Диалоговое окно Accone_dialog
@@ -40,6 +40,6 @@ public:
 
 	void add_member();
 	void add_vip();
-	void change_acc(Aleshko_account* acc, BOOL is_vip);
+	void change_acc(Aleshko_account* acc, BOOL is_v);
 	afx_msg void OnBnHotItemChangeVip(NMHDR* pNMHDR, LRESULT* pResult);
 };

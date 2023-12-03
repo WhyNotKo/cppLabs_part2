@@ -20,17 +20,19 @@
 #define IDC_ACCTYPE                     1013
 #define IDC_ACCMONEY                    1014
 #define IDC_ACCLIMIT                    1015
-#define IDC_CHECK1                      1016
 #define IDC_VIP                         1016
 #define ID_32771                        32771
 #define ID_32772                        32772
+#define ID_32773                        32773
+#define ID_EDIT_SSSDIALOG               32774
+#define ID_EDIT_DIALOG                  32775
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        315
-#define _APS_NEXT_COMMAND_VALUE         32773
+#define _APS_NEXT_COMMAND_VALUE         32776
 #define _APS_NEXT_CONTROL_VALUE         1017
 #define _APS_NEXT_SYMED_VALUE           310
 #endif

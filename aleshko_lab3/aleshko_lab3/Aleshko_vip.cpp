@@ -18,12 +18,6 @@ void Aleshko_vip::Serialize(CArchive& ar) {
 	}
 }
 
-void Aleshko_vip::GetLength(CDC* pDC, vector <int> mesLen)
-{
-	Aleshko_account::GetLength(pDC, mesLen);
-	mesLen[3] = pDC->GetTextExtent(to_string(credit_limit).c_str()).cx;
-	
-}
 
 void Aleshko_vip::CDCDraw(CDC* pDC, int* aLeft, vector<int> aLen, int& top, int lineHeight)
 {

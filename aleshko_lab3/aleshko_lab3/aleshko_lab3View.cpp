@@ -25,7 +25,6 @@ IMPLEMENT_DYNCREATE(Caleshkolab3View, CScrollView)
 
 BEGIN_MESSAGE_MAP(Caleshkolab3View, CScrollView)
 	ON_WM_LBUTTONDOWN()
-	ON_COMMAND(ID_32772, &Caleshkolab3View::OnEditMenu)
 END_MESSAGE_MAP()
 
 // Создание или уничтожение Caleshkolab3View
@@ -98,14 +97,6 @@ Caleshkolab3Doc* Caleshkolab3View::GetDocument() const // встроена не�
 	return (Caleshkolab3Doc*)m_pDocument;
 }
 #endif //_DEBUG
-
-void Caleshkolab3View::OnEditMenu()
-{
-	//Accs_dialog EditDialog(GetDocument());
-	//EditDialog.DoModal();
-
-	Invalidate();
-}
 
 
 

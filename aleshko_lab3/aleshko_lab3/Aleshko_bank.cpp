@@ -31,9 +31,7 @@ void Aleshko_bank::Save(CArchive& ar)
 
 
 	ar << (int)accounts.size();
-	for (auto& acc : accounts) {
-		ar << acc.get();
-	}
+	std::for_each(accounts.begin(), accounts.end(), [&](auto acc) {ar << &acc; });
 }
 
 CSize Aleshko_bank::DrawTable(CDC* pDC)
@@ -52,7 +50,6 @@ CSize Aleshko_bank::DrawTable(CDC* pDC)
 	vector<int> aLen{ 0, 0, 0, 0 };
 	for (int i = 0; i < 4; ++i)
 		aLen[i] = pDC->GetTextExtent(aHead[i]).cx;
-
 
 	for (auto acc : accounts)
 	{
@@ -124,10 +121,11 @@ void Aleshko_bank::Erase(int n)
 
 void Aleshko_bank::ToListMembers(CListBox& list)
 {
-	for (auto& p_mem : accounts) {
+	std::for_each(accounts.begin(), accounts.end(), [&](auto acc) {list.AddString(acc.get()->GetName()); });
+	//for (auto& acc : accounts) {
 
-		list.AddString(p_mem.get()->GetName());
-	}
+	//	list.AddString(acc.get()->GetName());
+	//}
 }
 size_t Aleshko_bank::GetSize() {
 	return accounts.size();
@@ -135,5 +133,5 @@ size_t Aleshko_bank::GetSize() {
 
 std::shared_ptr<Aleshko_account> Aleshko_bank::GetNAcc(int index)
 {
-	return accounts[index-1];
+	return accounts[index];
 }
