@@ -42,4 +42,5 @@ public:
 	void add_vip();
 	void change_acc(Aleshko_account* acc, BOOL is_v);
 	afx_msg void OnBnHotItemChangeVip(NMHDR* pNMHDR, LRESULT* pResult);
+	afx_msg void OnBnClickedVip();
 };

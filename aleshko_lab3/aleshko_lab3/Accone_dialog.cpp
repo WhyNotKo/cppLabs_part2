@@ -69,6 +69,7 @@ void Accone_dialog::DoDataExchange(CDataExchange* pDX)
 BEGIN_MESSAGE_MAP(Accone_dialog, CDialogEx)
 	ON_BN_CLICKED(IDOK, &Accone_dialog::OnBnClickedOk)
 	ON_NOTIFY(BCN_HOTITEMCHANGE, IDC_VIP, &Accone_dialog::OnBnHotItemChangeVip)
+	ON_BN_CLICKED(IDC_VIP, &Accone_dialog::OnBnClickedVip)
 END_MESSAGE_MAP()
 
 
@@ -161,4 +162,11 @@ void Accone_dialog::OnBnHotItemChangeVip(NMHDR* pNMHDR, LRESULT* pResult)
 	LPNMBCHOTITEM pHotItem = reinterpret_cast<LPNMBCHOTITEM>(pNMHDR);
 	pcredit_limit.EnableWindow(CB_vip.GetCheck());
 	*pResult = 0;
+}
+
+
+void Accone_dialog::OnBnClickedVip()
+{
+	// TODO: добавьте свой код обработчика уведомлений
+	pcredit_limit.EnableWindow(CB_vip.GetCheck());
 }
