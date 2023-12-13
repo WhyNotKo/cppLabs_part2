@@ -15,6 +15,10 @@ namespace Aleshko_lab5
             base.Input();
             Console.WriteLine("Введите кредитный лимит ");
             credit_limit = Convert.ToInt32(Console.ReadLine());
+            while(!int.TryParse(Console.ReadLine(), out credit_limit))
+            {
+                Console.WriteLine("Столько не даём!");
+            }
         }
         public override void Output() 
         { 

@@ -49,7 +49,7 @@ namespace Aleshko_lab5
             using (FileStream fout = new FileStream(fileName, FileMode.OpenOrCreate))
             {
                 BinaryFormatter formatter = new BinaryFormatter();
-                formatter.Serialize(fout, bank); // перевод данных в байты
+                formatter.Serialize(fout, bank); 
             }
         }
         public void FileLoad()

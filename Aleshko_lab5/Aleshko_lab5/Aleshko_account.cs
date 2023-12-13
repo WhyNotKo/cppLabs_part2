@@ -19,7 +19,10 @@ namespace Aleshko_lab5
             Console.WriteLine("Введите тип счёта ");
             type = Console.ReadLine();
             Console.WriteLine("Введите баланс счёта ");
-            money = Convert.ToInt32(Console.ReadLine());
+            while (!int.TryParse(Console.ReadLine(), out money))
+            {
+                Console.WriteLine("Слишком много денег или мимо");
+            };
         }
         public virtual void Output()
         {
