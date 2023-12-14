@@ -36,6 +36,16 @@ namespace Aleshko_lab6
         public Form1()
         {
             InitializeComponent();
+            textBox_name.Visible = false;
+            textBox_type.Visible = false;
+            textBox_balance.Visible = false;
+            textBox_credit.Visible = false;
+            label_credit.Visible = false;
+            label1.Visible = false;
+            label2.Visible = false;
+            label4.Visible = false;
+
+
         }
 
         [DllImport(@"Aleshko_dll.dll", CharSet = CharSet.Ansi)]
@@ -101,7 +111,7 @@ namespace Aleshko_lab6
 
             if (textBox_credit.Visible)
             {
-                if (!int.TryParse(textBox_balance.Text, out s.credit))
+                if (!int.TryParse(textBox_credit.Text, out s.credit))
                     s.credit = 99999999;
                 s.isVIP = true;
             }
@@ -112,6 +122,7 @@ namespace Aleshko_lab6
 
         private void button_load_Click(object sender, EventArgs e)
         {
+            
 
             listBox1.Items.Clear();
             openFileDialog1.InitialDirectory = Directory.GetCurrentDirectory();
@@ -120,6 +131,17 @@ namespace Aleshko_lab6
                 var FileName = new StringBuilder(openFileDialog1.FileName);
                 loadFromFile(FileName);
                 refreshListBoxContent();
+            }
+            if(listBox1.Items.Count != 0)
+            {
+                textBox_name.Visible = true;
+                textBox_type.Visible = true;
+                textBox_balance.Visible = true;
+                textBox_credit.Visible = true;
+                label_credit.Visible = true;
+                label1.Visible = true;
+                label2.Visible = true;
+                label4.Visible = true;
             }
         }
 
@@ -135,6 +157,12 @@ namespace Aleshko_lab6
 
         private void button_add_main_Click(object sender, EventArgs e)
         {
+            label1.Visible = true;
+            label2.Visible = true;
+            label4.Visible = true;
+            textBox_name.Visible = true;
+            textBox_type.Visible = true;
+            textBox_balance.Visible = true;
             Aleshko_account s = new Aleshko_account()
             {
                 isVIP = false,
@@ -146,6 +174,14 @@ namespace Aleshko_lab6
 
         private void button_add_vip_Click(object sender, EventArgs e)
         {
+            textBox_name.Visible = true;
+            textBox_type.Visible = true;
+            textBox_balance.Visible = true;
+            textBox_credit.Visible = true;
+            label_credit.Visible = true;
+            label1.Visible = true;
+            label2.Visible = true;
+            label4.Visible = true;
             Aleshko_account s = new Aleshko_account()
             {
                 isVIP = true,
@@ -171,8 +207,24 @@ namespace Aleshko_lab6
             listBox1.Items.Clear();
             refreshListBoxContent();
 
+            
             if (index == 0)
+            {
+                if (listBox1.Items.Count == 0)
+                {
+                    textBox_name.Visible = false;
+                    textBox_type.Visible = false;
+                    textBox_balance.Visible = false;
+                    textBox_credit.Visible = false;
+                    label_credit.Visible = false;
+                    label1.Visible = false;
+                    label2.Visible = false;
+                    label4.Visible = false;
+                    return;
+                }
                 return;
+            }
+                
 
             if (index == listBox1.Items.Count)
             {
@@ -181,6 +233,7 @@ namespace Aleshko_lab6
             else
             {
                 listBox1.SetSelected(index, true);
+                
             }
         }
 
