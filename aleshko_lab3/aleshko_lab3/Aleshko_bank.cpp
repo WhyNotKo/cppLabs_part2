@@ -10,7 +10,7 @@ void Aleshko_bank::Load(CArchive& ar)
 	for (size_t i = 0; i < size; i++) {
 		Aleshko_account* acc;
 		ar >> acc;
-		std::shared_ptr<Aleshko_account> newacc_shared(acc);
+		shared_ptr<Aleshko_account> newacc_shared(acc);
 		accounts.push_back(newacc_shared);
 	}
 }
@@ -28,10 +28,10 @@ void Aleshko_bank::Addvip(std::shared_ptr<Aleshko_vip> ptr)
 
 void Aleshko_bank::Save(CArchive& ar)
 {
-
-
 	ar << (int)accounts.size();
-	std::for_each(accounts.begin(), accounts.end(), [&](auto acc) {ar << &acc; });
+	for (auto& acc : accounts) {
+		ar << acc.get();
+	}
 }
 
 CSize Aleshko_bank::DrawTable(CDC* pDC)
